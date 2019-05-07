@@ -1,0 +1,59 @@
+Pet newPetA = new Pet
+        {
+            id = 0,
+            name = "Hello",
+            type = PetType.Frog,
+            positionOnMesh = new Vector3(0, 0, 0),
+            persistenceId = "12345",
+            portraitFilePath = "frog.png",
+            love = 5,
+            food = 5,
+            water = 5,
+            health = 6,
+            happiness = 5
+        };
+
+        Pet newPetB = new Pet
+        {
+            id = 1,
+            name = "Hola",
+            type = PetType.Unicorn,
+            positionOnMesh = new Vector3(0, 0, 0),
+            persistenceId = "123456",
+            portraitFilePath = "unicorn.png",
+            love = 5,
+            food = 5,
+            water = 5,
+            health = 6,
+            happiness = 5
+        };
+
+        Space newSpaceA = new Space
+        {
+            id = 0,
+            name = "Home",
+            persistenceId = "321"
+        };
+
+        Pet[] petArray = new Pet[2];
+        petArray[0] = newPetA;
+        petArray[1] = newPetB;
+
+        Space[] spaceArray = new Space[1];
+        spaceArray[0] = newSpaceA;
+
+        Account newAccount = new Account
+        {
+            id = 0,
+            firstName = "James",
+            lastName = "Kane",
+            email = "jameskane05@gmail.com",
+            password = "password",
+            pets = petArray,
+            spaces = spaceArray
+        };
+
+        Debug.Log(newAccount.pets[0].food);
+        string json = JsonUtility.ToJson(newAccount);
+        Debug.Log(json);
+        File.WriteAllText(Application.dataPath + "/account.json", json);
